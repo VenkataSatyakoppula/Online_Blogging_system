@@ -49,7 +49,7 @@
 
     <div class="auth-content">
 
-        <form action="register.html" method="post">
+        <form action="register.html" onsubmit="return validate()" method="post">
             <h2 class="form-title">Register</h2>
 
             <!-- <div class="msg error">
@@ -58,19 +58,19 @@
 
             <div>
                 <label>Username</label>
-                <input type="text" name="username" class="text-input">
+                <input type="text" name="username" id="user" class="text-input">
             </div>
             <div>
                 <label>Email</label>
-                <input type="email" name="email" class="text-input">
+                <input type="email" name="email" id="mail" class="text-input">
             </div>
             <div>
                 <label>Password</label>
-                <input type="password" name="password" class="text-input">
+                <input type="password" name="password" id="pass" class="text-input">
             </div>
             <div>
                 <label>Password Confirmation</label>
-                <input type="password" name="passwordConf" class="text-input">
+                <input type="password" name="passwordConf" id="cpass" class="text-input">
             </div>
             <div>
                 <button type="submit" name="register-btn" class="btn btn-big">Register</button>
@@ -86,6 +86,39 @@
 
     <!-- Custom Script -->
     <script src="js/scripts.js"></script>
+
+    <script>
+        var username = document.getElementById("user");
+        var email = document.getElementById("mail");
+        var password = document.getElementById("pass");
+        console.log(password)
+        var confirmpassword = document.getElementById("cpass");
+        console.log(confirmpassword)
+        function validate() {
+
+            if (username.value.trim() == ""){
+                alert("Username Should be filled!!");
+                return false;
+            }
+
+            if (email.value.trim() == "") {
+                alert("Email Id Should be filled!!");
+                return false;
+                }
+            if (password.value.trim() == ""){
+                alert("Password Should be filled!!");
+                return false;
+            }
+            if (confirmpassword.value.trim() == ""){
+                alert("Confirm Password Should be filled!!");
+                return false;
+            }
+            if (password.value.trim() != confirmpassword.value.trim()) {
+                alert("Passwords doesn't Match!!");
+                return false;
+            }
+        }
+    </script>
 
 </body>
 
